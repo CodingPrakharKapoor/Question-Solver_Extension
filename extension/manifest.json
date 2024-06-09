@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "Question Solver Extension",
+    "version": "1.0",
+    "description": "Select a multiple-choice question and get its solution by pressing Alt+A.",
+    "permissions": ["activeTab", "storage", "scripting"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.jpg",
+        "48": "icons/icon48.jpg",
+        "128": "icons/icon128.jpg"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "commands": {
+      "solve-question": {
+        "suggested_key": {
+          "default": "Alt+A"
+        },
+        "description": "Solve the selected question"
+      }
+    }
+  }
+  
